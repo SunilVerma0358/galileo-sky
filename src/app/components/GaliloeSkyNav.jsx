@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowIcon } from "./common/Icon";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,11 +10,14 @@ const GaliloeSkyNav = () => {
   function setopen() {
     setfirst(!first);
   }
-  if (first) {
-    document.body.classList.add("max-md:overflow-hidden");
-  } else {
-    document.body.classList.remove("max-md:overflow-hidden");
-  }
+  useEffect(() => {
+    if (isFirst) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [isFirst]);
+
   return (
     <div className="bg-nav-bg shadow-[0px_7px_10.9px_0px_#0000002E] py-[1px]">
       {" "}
